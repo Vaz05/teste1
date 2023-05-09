@@ -1,48 +1,36 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Button, Input, Form } from 'antd';
 
-class Form extends Component {
+class MyForm extends Component {
+  formRef = React.createRef();
+
   initialState = {
     name: '',
     job: '',
-  }
+  };
 
-  state = this.initialState
-
-  handleChange = (event) => {
-    const { name, value } = event.target
-  
-    this.setState({
-      [name]: value,
-    })
-  }
+  submitForm = (values) => {
+    this.props.handleSubmit(values);
+    this.formRef.current.resetFields();
+  };
 
   render() {
-    const { name, job } = this.state;
-  
     return (
-      <form>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          value={name}
-          onChange={this.handleChange} />
-        <label htmlFor="job">Job</label>
-        <input
-          type="text"
-          name="job"
-          id="job"
-          value={job}
-          onChange={this.handleChange} />
-          <input type="button" value="Submit" onClick={this.submitForm} />
-      </form>
+      <Form ref={this.formRef} onFinish={this.submitForm}>
+        <Form.Item name="name" label="Name" rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
+        <Form.Item name="job" label="Job" rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
     );
-  } 
-  submitForm = () => {
-    this.props.handleSubmit(this.state)
-    this.setState(this.initialState)
   }
 }
 
-export default Form;
+export default MyForm;
