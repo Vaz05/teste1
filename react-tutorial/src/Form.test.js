@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen} from '@testing-library/react';
 import MyForm from './Form';
+import '@testing-library/jest-dom';
 
 describe('MyForm', () => {
-
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
     value: jest.fn().mockImplementation(query => ({
