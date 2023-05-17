@@ -6,6 +6,7 @@ class App extends Component {
    state = {
     characters: [],
    }
+
    removeCharacter = (index) => {
     const { characters } = this.state
 
@@ -24,7 +25,7 @@ class App extends Component {
     const { characters } = this.state
 
     return (
-        <MyForm handleSubmit={this.handleSubmit}/>
+        <MyForm/>
     )
   }
 }
