@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Table from './Table'
 import MyForm from './Form'
 
 class App extends Component {
