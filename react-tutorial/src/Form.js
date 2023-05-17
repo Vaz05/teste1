@@ -23,7 +23,7 @@ class MyForm extends Component {
           <Input />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" onClick={this.props.hanleSubmit}>
+          <Button type="primary" htmlType="submit" onClick={this.props.handleSubmit}>
             Submit
           </Button>
         </Form.Item>

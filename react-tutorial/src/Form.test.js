@@ -1,4 +1,4 @@
-import {render} from 'react-dom';
+import {render, fireEvent} from 'react-dom';
 import MyForm from './Form';
 
 describe('MyForm', () => {
@@ -15,11 +15,6 @@ describe('MyForm', () => {
       dispatchEvent: jest.fn(),
     })),
   });
-
-  it("test", () => {
-    expect(true).toBe(true)
-  })
-
   
   it('renders the name input', () => {
     document.addEventListener('DOMContentLoaded', () => {
@@ -37,4 +32,15 @@ describe('MyForm', () => {
     });  
   });
 
+  it('renders handleSubmit', () => {
+    document.addEventListener('DOMContentLoaded', () => {
+    const handleSubmitMock = jest.fn();
+    const { getByText } = render(<MyForm handleSubmit={handleSubmitMock} />);
+  
+    const submitButton = getByText('Submit');
+    fireEvent.click(submitButton);
+  
+    expect(handleSubmitMock).toHaveBeenCalled();
+    })
+  })
 });
