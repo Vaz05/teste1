@@ -10,13 +10,12 @@ class MyForm extends Component {
   };
 
   submitForm = (values) => {
-    this.props.handleSubmit(values);
     this.formRef.current.resetFields();
   };
 
   render() {
     return (
-      <Form ref={this.formRef} onFinish={this.submitForm}>
+      <Form data-testid="f"  ref={this.formRef} onFinish={this.submitForm}>
         <Form.Item name="name" label="Name" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
@@ -24,7 +23,7 @@ class MyForm extends Component {
           <Input />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" onClick={this.props.handleSubmit}>
             Submit
           </Button>
         </Form.Item>
